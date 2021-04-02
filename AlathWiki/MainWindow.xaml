@@ -3,10 +3,32 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ArkaneSystems.AlathWiki.Desktop"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="AlathWiki" Height="896" Width="1400" WindowStartupLocation="CenterScreen" Loaded="OnWindowLoaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File"/>
+        </Menu>
+        <StatusBar x:Name="StatusBar" VerticalAlignment="Bottom" DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock>Status bar...</TextBlock>
+            </StatusBarItem>
+        </StatusBar>
+        <DockPanel>
+            <ListBox Width="200" />
+            <DockPanel>
+                <TextBlock FontFamily="Calibri" FontSize="48" FontWeight="Bold" DockPanel.Dock="Top">
+                    Page Title
+                </TextBlock>
+                <TabControl>
+                    <TabItem Header="View">
+                        <wv2:WebView2 Name="WikiPage" />
+                    </TabItem>
+                    <TabItem Header="Edit" IsEnabled="False"/>
+                    <TabItem Header="Notes" IsEnabled="False"/>
+                </TabControl>
+            </DockPanel>
+        </DockPanel>
+    </DockPanel>
 </Window>

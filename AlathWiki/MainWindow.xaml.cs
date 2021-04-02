@@ -10,6 +10,8 @@
 
 using System.Windows;
 
+using ArkaneSystems.AlathWiki.Core;
+
 #endregion
 
 namespace ArkaneSystems.AlathWiki.Desktop
@@ -22,6 +24,14 @@ namespace ArkaneSystems.AlathWiki.Desktop
         public MainWindow ()
         {
             this.InitializeComponent ();
+        }
+
+        // When the Window is loaded...
+        private async void OnWindowLoaded (object sender, RoutedEventArgs e)
+        {
+            // Load the initial page.
+            await this.WikiPage.EnsureCoreWebView2Async ();
+            this.WikiPage.NavigateToString (htmlContent: HtmlResources.InitialPage);
         }
     }
 }
